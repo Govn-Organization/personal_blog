@@ -1,0 +1,39 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    margin: 50px;
+    background-color: #141204;
+}
+hr {
+    border: 3px double #262A10;
+}
+header, main {
+    margin: 50px;
+    padding: 5px 20px 5px 20px;
+    border: 1px solid #262A10;
+    border-radius: 10px;
+    background-color: #54442B;
+
+    box-shadow: 5px 5px 9px 0px #262A10;
+
+    color: #E8985E;
+}
+.dani {
+    font-size: 20px;
+    color: #A9714B;
+
+    display: flex;
+    justify-content: space-between;
+
+    transition: font-size 0.3s;
+}
+a {
+    text-decoration: none;
+    color: #E8985E;
+}
+a:hover {
+    text-decoration: underline;
+}
+.dani:hover {
+    font-size: 135%;
+}

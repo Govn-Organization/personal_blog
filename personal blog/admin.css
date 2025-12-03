@@ -1,0 +1,79 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    margin: 50px;
+    background-color: #141204;
+}
+hr {
+    border: 3px double #262A10;
+}
+
+header, main {
+    margin: 50px;
+    padding: 5px 20px 5px 20px;
+    border: 1px solid #262A10;
+    border-radius: 10px;
+    background-color: #54442B;
+
+    box-shadow: 5px 5px 9px 0px #262A10;
+
+    color: #E8985E;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.manipulator {
+    width: 150px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+a {
+    margin: 20px 0px 0px 0px;
+    /* padding: 20px 0px 20px 0px; */
+
+    font-size: 20px;
+    text-decoration: none;
+    color: #A9714B;
+
+    transition: font-size 0.3s;
+}
+a:hover {
+    text-decoration: underline;
+    font-size: 135%;
+}
+button {
+    margin-top: 20px;
+    padding: 0;
+    height: 0;
+    width: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #A9714B;
+
+    transition: font-size 0.3s;
+}
+button:hover {
+    font-size: 135%;
+    text-decoration: underline;
+}
+.dani {
+    display: flex;
+    justify-content: space-between;
+}
+.imiachko > p {
+    margin: 20px 0px 20px 0px;
+}
+.imiachko > p > a {
+    text-decoration: none;
+    color: #E8985E;
+}
+.imiachko > p > a:hover {
+    text-decoration: underline;
+}

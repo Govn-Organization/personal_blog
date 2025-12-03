@@ -1,0 +1,24 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    margin: 50px;
+    background-color: #141204;
+}
+header, main {
+    margin: 25px;
+    padding: 5px 20px 5px 20px;
+    border: 1px solid #262A10;
+    border-radius: 10px;
+    background-color: #54442B;
+
+    box-shadow: 5px 5px 9px 0px #262A10;
+
+    color: #E8985E;
+}
+.kada {
+    font-size: 15px;
+    color: #A9714B;
+}
+p {
+    font-size: 20px;
+}
