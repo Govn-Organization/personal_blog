@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creating..</title>
-    <link rel="stylesheet" href="../static/new.css">
+    <title>New Article</title>
+    <link rel="stylesheet" th:href="@{/css/new.css}">
 </head>
 
 <body>
@@ -13,26 +13,32 @@
         <h1>New Article</h1>
     </header>
     <main>
-        <div class="dani">
+        <form th:action="@{/new}" method="post" class="dani" id="articleForm">
             <div class="imiachko">
-                <input type="text" placeholder="Article Title">
+                <input type="text" name="title" placeholder="Article Title" required>
             </div>
+            
             <div class="figniushka">
-                <input type="text" placeholder="Description">
+                <input type="text" name="description" placeholder="Description" required>
             </div>
+            
             <hr>
+            
             <div class="kada">
-                <input type="text" placeholder="Publishing Date">
+                <input type="date" name="publishDate" placeholder="Publishing Date">
             </div>
+            
             <hr>
+            
             <div class="interesninko">
-                <textarea name="text" id="" placeholder="Content"></textarea>
+                <textarea name="content" placeholder="Content" required></textarea>
             </div>
-        </div>
+        </form>
     </main>
 
     <footer>
-        <button>Publish!</button>
+        <button type="submit" form="articleForm">Publish!</button>
+        <p style="margin-top: 10px;"><a th:href="@{/}" style="color: #E8985E;">← Back to Home</a></p>
     </footer>
 </body>
 
