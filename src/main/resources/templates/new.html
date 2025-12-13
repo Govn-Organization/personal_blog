@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 
+    This is the form to create a new article
+    When user fills it out and clicks "Publish!", it sends data to the server
+-->
 
 <head>
     <meta charset="UTF-8">
@@ -13,23 +17,35 @@
         <h1>New Article</h1>
     </header>
     <main>
+        <!-- 
+            Form to create new article
+            th:action="@{/new}" means: when submitted, send data to /new URL
+            method="post" means: use POST method (for submitting data)
+            id="articleForm" is used by the button to know which form to submit
+        -->
         <form th:action="@{/new}" method="post" class="dani" id="articleForm">
+            <!-- Title input field -->
             <div class="imiachko">
+                <!-- name="title" means: when form is submitted, send this value as "title" -->
                 <input type="text" name="title" placeholder="Article Title" required>
             </div>
             
+            <!-- Description input field -->
             <div class="figniushka">
                 <input type="text" name="description" placeholder="Description" required>
             </div>
             
             <hr>
             
+            <!-- Date input field (optional) -->
             <div class="kada">
+                <!-- type="date" gives us a date picker -->
                 <input type="date" name="publishDate" placeholder="Publishing Date">
             </div>
             
             <hr>
             
+            <!-- Content textarea (big text box) -->
             <div class="interesninko">
                 <textarea name="content" placeholder="Content" required></textarea>
             </div>
@@ -37,9 +53,21 @@
     </main>
 
     <footer>
+        <!-- 
+            Button to submit the form
+            form="articleForm" means: when clicked, submit the form with id="articleForm"
+            type="submit" means: this button submits the form
+        -->
         <button type="submit" form="articleForm">Publish!</button>
+        <!-- Link back to home -->
         <p style="margin-top: 10px;"><a th:href="@{/}" style="color: #E8985E;">← Back to Home</a></p>
     </footer>
 </body>
 
 </html>
+
+
+
+
+
+

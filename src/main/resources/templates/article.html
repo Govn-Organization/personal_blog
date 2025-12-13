@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 
+    This page shows one article
+    The controller sends us an "article" object with all the article data
+-->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- th:text puts the article title in the page title -->
     <title th:text="${article.title}">Article</title>
     <link rel="stylesheet" th:href="@{/css/article.css}">
 </head>
 
 <body>
     <header>
+        <!-- Display article title -->
         <h1 th:text="${article.title}">Article Title</h1>
+        <!-- Display article description -->
         <p th:text="${article.description}">Description</p>
+        <!-- Display publish date -->
         <p class="kada" th:text="${article.publishDate}">Date</p>
     </header>
     <main>
+        <!-- Display article content -->
         <p th:text="${article.content}">Content</p>
+        <!-- Link back to home page -->
         <p><a th:href="@{/}">← Back to Home</a></p>
     </main>
 </body>
 
 </html>
+
+
+
+
+
+

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 
+    Thymeleaf is a template engine - it lets us put Java data into HTML
+    xmlns:th="..." tells the browser this is a Thymeleaf template
+-->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Blog</title>
+    <!-- th:href means: use Thymeleaf to generate the URL -->
     <link rel="stylesheet" th:href="@{/css/home.css}">
 </head>
 
@@ -12,18 +17,33 @@
     <header>
         <h1>Personal Blog</h1>
         <p>Tiny weeny description <i>(optional)</i></p>
+        <!-- Link to create new article -->
+        <!-- @{/new} means: create a link to /new URL -->
         <p><a th:href="@{/new}" style="color: #E8985E; font-size: 16px;">+ Create New Article</a></p>
     </header>
     <main>
+        <!-- 
+            th:if means: only show this if the condition is true
+            ${articles.isEmpty()} checks if the articles list is empty
+        -->
         <div th:if="${articles.isEmpty()}" class="dani">
             <p>No articles yet. Check back later!</p>
         </div>
         
+        <!-- 
+            th:each means: repeat this div for each article in the list
+            article : ${articles} means: for each article in the articles list
+        -->
         <div th:each="article : ${articles}" class="dani">
             <div class="imiachko">
+                <!-- 
+                    th:href creates a link to /article/{id} where {id} is replaced with article.id
+                    th:text puts the article title as the link text
+                -->
                 <p><a th:href="@{/article/{id}(id=${article.id})}" th:text="${article.title}">Article Title</a></p>
             </div>
             <div class="kada">
+                <!-- th:text displays the publish date -->
                 <p th:text="${article.publishDate}">Date</p>
             </div>
         </div>
