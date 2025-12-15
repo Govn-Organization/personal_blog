@@ -4,6 +4,7 @@ import com.govnorganization.personalblog.personalblog.model.PersonalBlogArticle;
 import com.govnorganization.personalblog.personalblog.service.PersonalBlogArticleService;
 import java.util.List;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +45,7 @@ public class PersonalBlogController implements CommandLineRunner {
     return "article/article";
   }
     @Override
-  public void run(String... args) throws Exception {
+  public void run(String @NonNull ... args) {
     personalBlogArticleService.save(
             new PersonalBlogArticle(
                     "Title1",
