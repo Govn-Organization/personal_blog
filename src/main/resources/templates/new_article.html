@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating..</title>
+    <link rel="stylesheet" th:href="@{/new.css}">
+</head>
+
+<body>
+<header>
+    <h1>New Article</h1>
+</header>
+<form th:action="@{/add_article}" th:object="${new_article}" method="post">
+    <main>
+        <div class="dani">
+            <div class="imiachko">
+                <input th:field="*{title}" type="text" placeholder="Article Title">
+            </div>
+            <div class="figniushka">
+                <input  th:field="*{description}" type="text" placeholder="Description">
+            </div>
+            <hr>
+            <div class="kada">
+                <input  type="text" th:field="*{date}" placeholder="Publishing Date">
+            </div>
+            <hr>
+            <div class="interesninko">
+                <!--                <input  name="content" type="text" placeholder="Content">-->
+                <textarea  th:field="*{content}" placeholder="Content"></textarea>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <button type="submit">Publish!</button>
+    </footer>
+</form>
+
+</body>
+
+</html>
