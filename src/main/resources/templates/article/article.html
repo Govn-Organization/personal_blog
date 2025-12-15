@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${article.title}">Article</title>
+    <link rel="stylesheet" th:href="@{/css/article.css}">
+</head>
+<body>
+<header>
+    <h1 th:text="${article.title}"></h1>
+    <p th:text="${article.description}"></p>
+    <p class="kada" th:text="${article.date}"></p>
+</header>
+<main>
+    <p th:utext="${article.content}"></p>
+</main>
+</body>
+</html>
