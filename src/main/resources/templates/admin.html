@@ -1,114 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Blog / Creator Mode</title>
-    <link rel="stylesheet" href="../static/css/admin.css">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
 </head>
 
 <body>
-    <header>
-        <div class="fignya">
-            <h1>Personal Blog</h1>
-            <p>Tiny weeny description <i>(optional)</i></p>
+<header>
+    <div class="fignya">
+        <h1>Personal Blog</h1>
+        <p>Tiny weeny description <i>(optional)</i></p>
+    </div>
+    <div class="ashesho">
+        <form th:action="@{/new_article}" method="post">
+            <button type="submit">+ Add</button>
+
+        </form>
+
+    </div>
+</header>
+<main>
+    <div class="dani">
+        <div class="imiachko">
+            <p><a href="/src/main/resources/articlenal-blog/src/main/resources/article/38.html">My first blog</a></p>
         </div>
-        <div class="ashesho">
-            <a href="new.html">+ Add</a>
+        <div class="manipulator">
+            <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
+            <button>Delete</button>
         </div>
-    </header>
-    <main>
-        <div class="dani">
-            <div class="imiachko">
-                <p><a href="/src/main/resources/articlenal-blog/src/main/resources/article/38.html">My first blog</a></p>
-            </div>
-            <div class="manipulator">
-                <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
-                <button>Delete</button>
-            </div>
+    </div>
+    <hr>
+    <div class="dani">
+        <div class="imiachko">
+            <p><a href="">Second article</a></p>
         </div>
-        <hr>
-        <div class="dani">
-            <div class="imiachko">
-                <p><a href="">Second article</a></p>
-            </div>
-            <div class="manipulator">
-                <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
-                <button>Delete</button>
-            </div>
+        <div class="manipulator">
+            <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
+            <button>Delete</button>
         </div>
-        <hr>
-        <div class="dani">
-            <div class="imiachko">
-                <p><a href="">Third article</a></p>
-            </div>
-            <div class="manipulator">
-                <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
-                <button>Delete</button>
-            </div>
+    </div>
+    <hr>
+    <div class="dani">
+        <div class="imiachko">
+            <p><a href="">Third article</a></p>
         </div>
-        <hr>
-        <div class="dani">
-            <div class="imiachko">
-                <p><a href="">Fourth article</a></p>
-            </div>
-            <div class="manipulator">
-                <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
-                <button>Delete</button>
-            </div>
+        <div class="manipulator">
+            <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
+            <button>Delete</button>
         </div>
-        <hr>
-        <div class="dani">
-            <div class="imiachko">
-                <p><a href="">Fifth article</a></p>
-            </div>
-            <div class="manipulator">
-                <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
-                <button>Delete</button>
-            </div>
+    </div>
+    <hr>
+    <div class="dani">
+        <div class="imiachko">
+            <p><a href="">Fourth article</a></p>
         </div>
-        <hr>
-        <div class="dani">
-            <div class="imiachko">
-                <p><a href="">Sixth article</a></p>
-            </div>
-            <div class="manipulator">
-                <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
-                <button>Delete</button>
-            </div>
+        <div class="manipulator">
+            <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
+            <button>Delete</button>
         </div>
-        <hr>
-        <div class="dani">
-            <div class="imiachko">
-                <p><a href="">Seventh article</a></p>
-            </div>
-            <div class="manipulator">
-                <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
-                <button>Delete</button>
-            </div>
+    </div>
+    <hr>
+    <div class="dani">
+        <div class="imiachko">
+            <p><a href="">Fifth article</a></p>
         </div>
-        <hr>
-        <div class="dani">
-            <div class="imiachko">
-                <p><a href="">Eighth article</a></p>
-            </div>
-            <div class="manipulator">
-                <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
-                <button>Delete</button>
-            </div>
+        <div class="manipulator">
+            <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
+            <button>Delete</button>
         </div>
-        <hr>
-        <div class="dani">
-            <div class="imiachko">
-                <p><a href="">Nineth article</a></p>
-            </div>
-            <div class="manipulator">
-                <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
-                <button>Delete</button>
-            </div>
+    </div>
+    <hr>
+    <div class="dani">
+        <div class="imiachko">
+            <p><a href="">Sixth article</a></p>
         </div>
-    </main>
+        <div class="manipulator">
+            <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
+            <button>Delete</button>
+        </div>
+    </div>
+    <hr>
+    <div class="dani">
+        <div class="imiachko">
+            <p><a href="">Seventh article</a></p>
+        </div>
+        <div class="manipulator">
+            <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
+            <button>Delete</button>
+        </div>
+    </div>
+    <hr>
+    <div class="dani">
+        <div class="imiachko">
+            <p><a href="">Eighth article</a></p>
+        </div>
+        <div class="manipulator">
+            <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
+            <button>Delete</button>
+        </div>
+    </div>
+    <hr>
+    <div class="dani">
+        <div class="imiachko">
+            <p><a href="">Nineth article</a></p>
+        </div>
+        <div class="manipulator">
+            <a href="/src/main/resources/editrsonal-blog/src/main/resources/edit/38.html">Edit</a>
+            <button>Delete</button>
+        </div>
+    </div>
+</main>
 </body>
 
 </html>
