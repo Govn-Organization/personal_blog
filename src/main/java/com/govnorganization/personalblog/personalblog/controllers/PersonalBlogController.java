@@ -97,38 +97,38 @@ public class PersonalBlogController implements CommandLineRunner {
   @Override
   public void run(String @NonNull ... args) {
     personalBlogArticleService.deleteAll();
-    personalBlogArticleService.save(
-        new PersonalBlogArticle(
-            "Title1",
-            "some information",
-            "data",
-            """
-                      some content lmaoooo
-                      loooool
-                      kk  eeeeekkk
-              """));
-    personalBlogArticleService.save(
-        new PersonalBlogArticle(
-            "Title2",
-            "some information",
-            "data",
-            """
-                              some conasdftent lmaoooo
-                              looooasdfol
-                              kk  eeeasdfasdf
-                              asdfeekkk
-                      """));
-    personalBlogArticleService.save(
-        new PersonalBlogArticle(
-            "Title3",
-            "some information",
-            "daasdfta",
-            """
-                              some coasdfntent lmaoooo
-                              looooasd
-
-                              fol
-                              kk  eeeasdfeekkk
-                      """));
+//    personalBlogArticleService.save(
+//        new PersonalBlogArticle(
+//            "Title1",
+//            "some information",
+//            "data",
+//            """
+//                      some content lmaoooo
+//                      loooool
+//                      kk  eeeeekkk
+//              """));
+//    personalBlogArticleService.save(
+//        new PersonalBlogArticle(
+//            "Title2",
+//            "some information",
+//            "data",
+//            """
+//                              some conasdftent lmaoooo
+//                              looooasdfol
+//                              kk  eeeasdfasdf
+//                              asdfeekkk
+//                      """));
+//    personalBlogArticleService.save(
+//        new PersonalBlogArticle(
+//            "Title3",
+//            "some information",
+//            "daasdfta",
+//            """
+//                              some coasdfntent lmaoooo
+//                              looooasd
+//
+//                              fol
+//                              kk  eeeasdfeekkk
+//                      """));
   }
 }
