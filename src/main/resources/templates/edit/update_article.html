@@ -9,32 +9,35 @@
 </head>
 
 <body>
-    <header>
-        <h1>Update Article</h1>
-    </header>
+<header>
+    <h1>Update Article</h1>
+</header>
+<form th:action="@{/update/{id}(id=${article.id})}" th:object="${article}" method="post">
     <main>
         <div class="dani">
             <div class="imiachko">
-                <input type="text" placeholder="Article Title" value="My first artiicle">
+                <input type="text" placeholder="Article Title" th:value="${article.title}" th:field="*{title}">
             </div>
             <div class="figniushka">
-                <input type="text" placeholder="Description" value="This is my first blog, idk why the date here is the most recent one lol. Yippie!!!">
+                <input type="text" placeholder="Description" th:value="${article.description}" th:field="*{description}">
             </div>
             <hr>
             <div class="kada">
-                <input type="text" placeholder="Publishing Date" value="August 7, 2024">
+                <input type="text" placeholder="Publishing Date" th:value="${article.date}" th:field="*{date}">
             </div>
             <hr>
             <div class="interesninko">
-                <textarea name="text" id="" placeholder="Content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non provident, sunt in culpa qui official deserunt mollit anim id est laborum.</textarea>
+                <textarea name="text" id="" placeholder="Content" th:text="${article.content}" th:field="*{content}"></textarea>
+
                 <!-- <input type="text" placeholder="Content"> -->
             </div>
         </div>
     </main>
-
     <footer>
-        <button>Update!</button>
+        <button type="submit">Update!</button>
     </footer>
+</form>
+
 </body>
 
 </html>

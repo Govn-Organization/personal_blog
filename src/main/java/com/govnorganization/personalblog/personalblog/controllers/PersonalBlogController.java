@@ -20,6 +20,12 @@ public class PersonalBlogController implements CommandLineRunner {
     this.personalBlogArticleService = personalBlogArticleService;
   }
 
+  @GetMapping("/home")
+  public String home(Model model) {
+
+    return "home";
+  }
+
   @GetMapping("/admin")
   public String admin(Model model) {
     List<PersonalBlogArticle> articles = personalBlogArticleService.findAll();
@@ -28,42 +34,57 @@ public class PersonalBlogController implements CommandLineRunner {
     return "admin";
   }
 
-  @GetMapping("/new_article")
-  public String new_article(Model model) {
-    PersonalBlogArticle new_article = new PersonalBlogArticle();
-    model.addAttribute("new_article",new_article);
-    return "new_article";
-  }
-  @PostMapping("/add_article")
-  public  String add_article(@ModelAttribute PersonalBlogArticle article){
-    personalBlogArticleService.save(article);
-    return "redirect:/admin";
-  }
-
-  @PostMapping("/delete/{id}")
-  public String delete_article(@PathVariable Long id){
-
-    personalBlogArticleService.deleteById(id);
-
-
-    return "redirect:/admin";
-  }
-
-  @GetMapping("/article/{id}")
+  @GetMapping("/article_update/{id}")
   public String article_by_id(@PathVariable Long id, Model model) {
     PersonalBlogArticle article =
         personalBlogArticleService
             .findById(id)
             .orElseThrow(() -> new RuntimeException("Article doesn't exist"));
-    String format = article.getContent().replace("\n", "<br>");
-    article.setContent(format);
     model.addAttribute("article", article);
 
-    return "article/article";
+    return "edit/update_article";
+  }
+
+  @PostMapping("/update/{id}")
+  public String update(@PathVariable Long id, @ModelAttribute PersonalBlogArticle article) {
+    PersonalBlogArticle updated_article =
+        personalBlogArticleService
+            .findById(id)
+            .orElseThrow(() -> new RuntimeException("Article doesn't exist"));
+    personalBlogArticleService.save(article);
+    updated_article.setTitle(article.getTitle());
+    updated_article.setDescription(article.getDescription());
+    updated_article.setDate(article.getDate());
+    updated_article.setContent(article.getContent());
+
+    personalBlogArticleService.save(updated_article);
+    return "redirect:/admin";
+  }
+
+  @GetMapping("/new_article")
+  public String new_article(Model model) {
+    PersonalBlogArticle new_article = new PersonalBlogArticle();
+    model.addAttribute("new_article", new_article);
+    return "new_article";
+  }
+
+  @PostMapping("/add_article")
+  public String add_article(@ModelAttribute PersonalBlogArticle article) {
+    personalBlogArticleService.save(article);
+    return "redirect:/admin";
+  }
+
+  @PostMapping("/delete/{id}")
+  public String delete_article(@PathVariable Long id) {
+
+    personalBlogArticleService.deleteById(id);
+
+    return "redirect:/admin";
   }
 
   @Override
   public void run(String @NonNull ... args) {
+    personalBlogArticleService.deleteAll();
     personalBlogArticleService.save(
         new PersonalBlogArticle(
             "Title1",
