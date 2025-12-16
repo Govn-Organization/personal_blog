@@ -27,6 +27,9 @@
                 <div class="imiachko">
                     <p>
                         <a th:href="@{article/{id}(id=${item.id})}" th:text="${item.title}"></a>
+                    <form th:action="@{/delete/{id}(id=${item.id})}" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
                     </p>
                 </div>
             </li>

@@ -40,6 +40,14 @@ public class PersonalBlogController implements CommandLineRunner {
     return "redirect:/admin";
   }
 
+  @PostMapping("/delete/{id}")
+  public String delete_article(@PathVariable Long id){
+
+    personalBlogArticleService.deleteById(id);
+
+
+    return "redirect:/admin";
+  }
 
   @GetMapping("/article/{id}")
   public String article_by_id(@PathVariable Long id, Model model) {
