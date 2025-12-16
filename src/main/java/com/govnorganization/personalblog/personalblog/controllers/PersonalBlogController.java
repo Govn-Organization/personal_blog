@@ -22,8 +22,20 @@ public class PersonalBlogController implements CommandLineRunner {
 
   @GetMapping("/home")
   public String home(Model model) {
-
+    List<PersonalBlogArticle> articles = personalBlogArticleService.findAll();
+    model.addAttribute("all_articles", articles);
     return "home";
+  }
+
+  @GetMapping("/article/{id}")
+  public String get_article(@PathVariable Long id, Model model) {
+    PersonalBlogArticle article =
+        personalBlogArticleService
+            .findById(id)
+            .orElseThrow(() -> new RuntimeException("Article doesn't exist"));
+    model.addAttribute("article", article);
+
+    return "article/article";
   }
 
   @GetMapping("/admin")
@@ -35,12 +47,12 @@ public class PersonalBlogController implements CommandLineRunner {
   }
 
   @GetMapping("/article_update/{id}")
-  public String article_by_id(@PathVariable Long id, Model model) {
+  public String article_update(@PathVariable Long id, Model model) {
     PersonalBlogArticle article =
         personalBlogArticleService
             .findById(id)
             .orElseThrow(() -> new RuntimeException("Article doesn't exist"));
-    model.addAttribute("article", article);
+    model.addAttribute("article_update", article);
 
     return "edit/update_article";
   }
