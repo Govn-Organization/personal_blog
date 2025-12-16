@@ -1,69 +1,64 @@
 package com.govnorganization.personalblog.personalblog.model;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
 public class PersonalBlogArticle {
-    @Id @GeneratedValue
-    private Long id;
+  @Id @GeneratedValue private Long id;
 
-    private String title;
-    private String description;
-    private String date;
-    private String content;
+  private String title;
+  private String description;
+  private String date;
+  private String content;
 
-    public PersonalBlogArticle(){
-    }
+  public PersonalBlogArticle() {}
 
-    public PersonalBlogArticle(String title, String description, String date, String content) {
-        this.title = title;
-        this.description = description;
-        this.date = date;
-        this.content = content;
-    }
+  public PersonalBlogArticle(String title, String description, String date, String content) {
+    this.title = title;
+    this.description = description;
+    this.date = date;
+    this.content = content;
+  }
 
+  public Long getId() {
+    return id;
+  }
 
-    public Long getId() {
-        return id;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public String getTitle() {
+    return title;
+  }
 
-    public String getTitle() {
-        return title;
-    }
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public String getDate() {
+    return date;
+  }
 
-    public String getDate() {
-        return date;
-    }
+  public void setDate(String date) {
+    this.date = date;
+  }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
+  public String getContent() {
+    return content;
+  }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
+  public void setContent(String content) {
+    this.content = content;
+  }
 }

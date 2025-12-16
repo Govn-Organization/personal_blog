@@ -13,22 +13,22 @@ public class SecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http
-        .csrf(csrf -> csrf.disable())
-        .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/", "/home", "/article/**", "/css/**", "/new.css").permitAll()
-            .requestMatchers(
-                "/admin/**",
-                "/new_article/**",
-                "/add_article/**",
-                "/delete/**",
-                "/article_update/**")
-            .authenticated()
-            .anyRequest()
-            .permitAll())
+    http.csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(
+            auth ->
+                auth.requestMatchers("/", "/home", "/article/**", "/css/**", "/new.css")
+                    .permitAll()
+                    .requestMatchers(
+                        "/admin/**",
+                        "/new_article/**",
+                        "/add_article/**",
+                        "/delete/**",
+                        "/article_update/**")
+                    .authenticated()
+                    .anyRequest()
+                    .permitAll())
         .httpBasic(Customizer.withDefaults());
 
     return http.build();
   }
 }
-
