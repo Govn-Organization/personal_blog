@@ -1,4 +1,4 @@
-package com.govnorganization.personalblog.personalblog;
+package com.govnorganization.personalblog.personalblog.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

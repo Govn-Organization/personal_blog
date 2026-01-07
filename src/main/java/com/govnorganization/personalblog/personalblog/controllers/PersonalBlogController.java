@@ -1,8 +1,11 @@
 package com.govnorganization.personalblog.personalblog.controllers;
 
-import com.govnorganization.personalblog.personalblog.model.PersonalBlogArticle;
-import com.govnorganization.personalblog.personalblog.service.PersonalBlogArticleService;
+import com.govnorganization.personalblog.personalblog.entity.PersonalBlogArticle;
+import com.govnorganization.personalblog.personalblog.repository.PersonalBlogArticleRepository;
 import java.util.List;
+
+import com.govnorganization.personalblog.personalblog.service.PersonalBlogArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,23 +17,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class PersonalBlogController {
   private final PersonalBlogArticleService personalBlogArticleService;
 
+  @Autowired
   public PersonalBlogController(PersonalBlogArticleService personalBlogArticleService) {
+    System.out.println("herer");
     this.personalBlogArticleService = personalBlogArticleService;
   }
 
   @GetMapping("/home")
   public String home(Model model) {
-    List<PersonalBlogArticle> articles = personalBlogArticleService.findAll();
+    List<PersonalBlogArticle> articles = personalBlogArticleService.getAllArticles();
     model.addAttribute("all_articles", articles);
     return "home";
   }
 
   @GetMapping("/article/{id}")
   public String get_article(@PathVariable Long id, Model model) {
-    PersonalBlogArticle article =
-        personalBlogArticleService
-            .findById(id)
-            .orElseThrow(() -> new RuntimeException("Article doesn't exist"));
+    PersonalBlogArticle article = personalBlogArticleService.findById(id);
     model.addAttribute("article", article);
 
     return "article/article";
@@ -38,7 +40,7 @@ public class PersonalBlogController {
 
   @GetMapping("/admin")
   public String admin(Model model) {
-    List<PersonalBlogArticle> articles = personalBlogArticleService.findAll();
+    List<PersonalBlogArticle> articles = personalBlogArticleService.getAllArticles();
     model.addAttribute("all_articles", articles);
 
     return "admin";
@@ -46,10 +48,7 @@ public class PersonalBlogController {
 
   @GetMapping("/article_update/{id}")
   public String article_update(@PathVariable Long id, Model model) {
-    PersonalBlogArticle article =
-        personalBlogArticleService
-            .findById(id)
-            .orElseThrow(() -> new RuntimeException("Article doesn't exist"));
+    PersonalBlogArticle article = personalBlogArticleService.findById(id);
     model.addAttribute("article_update", article);
 
     return "edit/update_article";
@@ -57,10 +56,7 @@ public class PersonalBlogController {
 
   @PostMapping("/update/{id}")
   public String update(@PathVariable Long id, @ModelAttribute PersonalBlogArticle article) {
-    PersonalBlogArticle updated_article =
-        personalBlogArticleService
-            .findById(id)
-            .orElseThrow(() -> new RuntimeException("Article doesn't exist"));
+    PersonalBlogArticle updated_article = personalBlogArticleService.findById(id);
     personalBlogArticleService.save(article);
     updated_article.setTitle(article.getTitle());
     updated_article.setDescription(article.getDescription());

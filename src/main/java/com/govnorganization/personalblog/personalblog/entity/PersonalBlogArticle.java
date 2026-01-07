@@ -1,4 +1,4 @@
-package com.govnorganization.personalblog.personalblog.model;
+package com.govnorganization.personalblog.personalblog.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
