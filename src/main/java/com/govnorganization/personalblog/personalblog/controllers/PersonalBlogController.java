@@ -8,10 +8,7 @@ import com.govnorganization.personalblog.personalblog.service.PersonalBlogArticl
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PersonalBlogController {
@@ -21,6 +18,11 @@ public class PersonalBlogController {
   public PersonalBlogController(PersonalBlogArticleService personalBlogArticleService) {
     System.out.println("herer");
     this.personalBlogArticleService = personalBlogArticleService;
+  }
+
+  @RequestMapping("/")
+  public String redirect_to_main_page(){
+    return "redirect:/home";
   }
 
   @GetMapping("/home")
