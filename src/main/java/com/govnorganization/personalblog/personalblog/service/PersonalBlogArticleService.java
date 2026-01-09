@@ -1,38 +1,59 @@
 package com.govnorganization.personalblog.personalblog.service;
 
+import com.govnorganization.personalblog.personalblog.dto.ArticleSummaryDto;
 import com.govnorganization.personalblog.personalblog.entity.PersonalBlogArticle;
 import com.govnorganization.personalblog.personalblog.repository.PersonalBlogArticleRepository;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PersonalBlogArticleService {
+  private static final Logger logger = LoggerFactory.getLogger(PersonalBlogArticleService.class);
   private final PersonalBlogArticleRepository personalBlogArticleRepository;
 
   @Autowired
   public PersonalBlogArticleService(PersonalBlogArticleRepository personalBlogArticleRepository) {
-    System.out.println("Wired");
     this.personalBlogArticleRepository = personalBlogArticleRepository;
+    logger.info("PersonalBlogArticleService initialized");
   }
 
-  public List<PersonalBlogArticle> getAllArticles() {
-    System.out.println("geted");
-    return personalBlogArticleRepository.findAll();
+  public List<ArticleSummaryDto> getAllArticles() {
+    logger.debug("Fetching all articles");
+    List<ArticleSummaryDto> articles =
+        personalBlogArticleRepository.findAll().stream()
+            .map(
+                article ->
+                    new ArticleSummaryDto(article.getId(), article.getTitle(), article.getDate()))
+            .collect(Collectors.toList());
+    logger.debug("Found {} articles", articles.size());
+    return articles;
   }
 
   public void save(PersonalBlogArticle article) {
-    System.out.println("saved");
+    logger.debug("Saving article: {}", article.getTitle());
     personalBlogArticleRepository.save(article);
+    logger.debug("Article saved with id: {}", article.getId());
   }
 
   public PersonalBlogArticle findById(Long id) {
-    System.out.println("finded");
-    return personalBlogArticleRepository.findById(id).orElseThrow(() -> new RuntimeException());
+    logger.debug("Finding article by id: {}", id);
+    return personalBlogArticleRepository
+        .findById(id)
+        .orElseThrow(
+            () -> {
+              logger.error("Article with id {} not found", id);
+              return new RuntimeException("Article not found");
+            });
   }
 
   public void deleteById(Long id) {
-    System.out.println("deleted");
+    logger.debug("Deleting article by id: {}", id);
     personalBlogArticleRepository.deleteById(id);
+    logger.debug("Article with id {} deleted", id);
   }
 }
